@@ -1,6 +1,7 @@
 import axios from 'axios';
 import arrowLeftIcon from '../images/icons/sprite.svg';
 import arrowRightIcon from '../images/icons/sprite.svg';
+import reviews from '../reviews.json'
 
 const BASE_URI = 'https://portfolio-js.b.goit.study/api/reviews';
 const gallery = document.querySelector('.gallery');
@@ -12,10 +13,10 @@ async function getReviewsFromServer() {
     gallery.innerHTML = `<div class="swiper mySwiper">
       <p class = "review">REVIEW</p>
     <div id = "swiper-wrapper" class="swiper-wrapper">
-       ${data
+       ${reviews
          .map(
            ({ author, avatar_url, review }) => `
-          <div class="swiper-slide">
+           <div class="swiper-slide">
             <div class="gallery-item">
               <img src="${avatar_url}" class="gallery-image" alt="${author}"/>
                 <div class="author">${author}</div>

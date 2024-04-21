@@ -54,6 +54,9 @@
   left: 85px;
   top: 2px;
 }
+.header-logo{
+  border-radius: 12px;
+}
 .menu-btn {
   border: none;
   background-color: transparent;

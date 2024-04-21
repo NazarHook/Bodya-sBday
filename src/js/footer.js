@@ -5,6 +5,7 @@ import axios from 'axios';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import xIcon from '../images/icons/sprite.svg'
+const videoSrc = '../images/bodya/thanks.MP4';
 const inputCommit = document.querySelector('.js-inputCommit');
 const localStorageKey = 'feedback-form-state';
 const formFeedback = document.querySelector('.js-form');
@@ -84,19 +85,32 @@ function onSubmitForm(e) {
   postAPi(formData)
     .then(data => {
       const { message, title } = data;
-      const instance = basicLightbox.create(
-        `<div class="footer-modal"><h2 class="footer-title-modal">${title}</h2><p class="footer-text-modal">${message}</p><button class="footer-button-modal js-closeModal"><svg width="11" height="11" class="close-button-svg"><use href="${xIcon}#icon-close-x"></use></svg></button></div>`
-      );
+      const instance = basicLightbox.create(`
+        <div class="footer-modal">
+          <h2 class="footer-title-modal">Дякую файно! Богданчик скоро з вами звяжеться</h2>
+          <video id="modalVideo" width="100" height="100">
+            <source src="${videoSrc}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <button class="footer-button-modal js-closeModal">
+            <svg width="11" height="11" class="close-button-svg">
+              <use href="${xIcon}#icon-close-x"></use>
+            </svg>
+          </button>
+        </div>
+      `);
       instance.show();
+
+      // Get reference to the video element
+      const modalVideo = instance.element().querySelector('#modalVideo');
+
+      // Play the video when modal is opened
+      modalVideo.play();
 
       statusBtn();
       document.body.classList.add('modal-open');
 
-      inputEmail.style.borderBottom = '1px solid rgba(250, 250, 250, 0.2)';
-
-      const closeModalButton = instance
-        .element()
-        .querySelector('.js-closeModal');
+      const closeModalButton = instance.element().querySelector('.js-closeModal');
       closeModalButton.addEventListener('click', () => {
         instance.close();
         closeModal();
@@ -124,6 +138,7 @@ function onSubmitForm(e) {
     });
 }
 
+
 function statusBtn() {
   const inputEmail = formFeedback.elements.email.value.trim();
   const textareaMessage = formFeedback.elements.message.value.trim();
@@ -145,13 +160,13 @@ function validateInputEmail() {
   if (isValid) {
     listTextMessage.style.display = 'block';
     listTextMessage.style.color = '#3CBC81';
-    listTextMessage.textContent = 'Succes!';
+    listTextMessage.textContent = 'Сяк дубрі!';
 
     inputEmail.style.borderBottom = '1px solid #3CBC81';
   } else {
     listTextMessage.style.display = 'block';
     listTextMessage.style.color = '#E74A3B';
-    listTextMessage.textContent = 'Invalid email, try again';
+    listTextMessage.textContent = 'Будь добрий напиши нормально';
 
     inputEmail.style.borderBottom = '1px solid #E74A3B';
   }

@@ -286,7 +286,11 @@
 .input-commit:focus {
   border-bottom: 1px solid var(--footer-title-text);
 }
-
+#modalVideo{
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 150px;
+}
 .footer-button {
   color: var(--footer-title-text);
   background-color: #c6e327;
@@ -432,16 +436,10 @@
   }
 }
 
-.footer-text-modal {
-  color: var(--email-teil-text);
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  text-align: center;
-
-  width: 279px;
+#modalVideo {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
 
 @media screen and (min-width: 768px) {
