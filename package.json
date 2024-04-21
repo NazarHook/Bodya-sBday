@@ -1,11 +1,11 @@
 {
-  "name": "full-stack-force",
+  "name": "bodyasbday",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/full-stack-force/",
+    "build": "vite build --base=/bodyasbday/",
     "preview": "vite preview"
   },
   "devDependencies": {
